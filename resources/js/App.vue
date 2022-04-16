@@ -1,19 +1,16 @@
 <template>
-  <div>{{ hello }}</div>
-  <button type="button" class="btn btn-success">Success</button>
+  <Test></Test>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
-export default {
-  setup() {
-      const hello = ref(
-          "Hello From TypeScript  aaa"
-      )
-
-      return {
-          hello
-      }
-  },
-};
+  import { ref } from "vue";
+  import Test  from './components/Test.vue'
+  export default {
+    components :{
+      Test,
+    },
+    setup() {
+       
+    },
+  };
 </script>
