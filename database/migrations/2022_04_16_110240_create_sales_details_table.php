@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('change')->comment('お釣り');
             $table->dateTime('published_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('売上日時');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

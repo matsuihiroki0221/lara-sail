@@ -8,4 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+        'company_id',
+    ];
+
+    public function company() {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * 売上詳細を取得
+     */
+    public function salesDetails() {
+        return $this->hasMany(SalesDetail::class);
+    }
+
+    /**
+     *商品情報を取得
+     */
+    public function salesProducts() {
+        return $this->hasMany(SalesProduct::class);
+    }
 }

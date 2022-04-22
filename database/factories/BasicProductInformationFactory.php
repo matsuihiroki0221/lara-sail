@@ -17,7 +17,9 @@ class BasicProductInformationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'price' => $this->faker->numberBetween(500,10000),
+            'tax_class' => 1,
         ];
     }
 }

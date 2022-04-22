@@ -3,8 +3,8 @@
   <button @click="testFunc">Add Count</button>
 </template>
 <script lang="ts">
-    import { defineComponent,ref } from "vue";
-    export default defineComponent({
+    import { ref } from "vue";
+    export default {
         setup() {
             const count = ref(0);
             const testFunc = ()=> {
@@ -15,5 +15,5 @@
             testFunc
         }
         }
-    })
+    }
 </script>

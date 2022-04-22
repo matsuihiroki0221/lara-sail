@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price')->comment('金額');
             $table->integer('tax_class')->comment('税区分')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

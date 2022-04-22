@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('tel');
             $table->string('address')->nullable()->comment('住所');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

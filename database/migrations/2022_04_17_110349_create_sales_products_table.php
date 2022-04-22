@@ -22,6 +22,7 @@ return new class extends Migration
             $table->dateTime('published_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('売上日時');
             $table->integer('number_purchases')->comment('購入点数');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
