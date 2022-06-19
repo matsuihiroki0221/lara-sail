@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Product;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BasicProductInformation>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Image>
  */
-class BasicProductInformationFactory extends Factory
+class ImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +18,9 @@ class BasicProductInformationFactory extends Factory
     public function definition()
     {
         return [
+            'sales_product_id' => Product::factory(),
             'name' => $this->faker->name(),
-            'price' => $this->faker->numberBetween(500,10000),
-            'tax_class' => 1,
+            'path' => $this->faker->url(),
         ];
     }
 }

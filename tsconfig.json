@@ -6,6 +6,7 @@
         "strict": true,
         "jsx": "preserve",
         "moduleResolution": "node",
+        "types": ["node"],
         "typeRoots": ["./resources/js/@types"]
     },
     "include": ["./resources/js/**/*"]

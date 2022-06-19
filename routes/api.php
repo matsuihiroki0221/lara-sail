@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('products/{product}',[ProductController::class, 'update']);
+Route::resource('products',ProductController::class)->except([
+    'create', 'update',
+]);;
+
+Route::get('categories/tags_index', [CategoryController::class, 'tagsIndex']);
+Route::resource('categories',CategoryController::class);

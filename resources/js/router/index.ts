@@ -1,8 +1,9 @@
-
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router"
 import ProductRouter from "../router/product-router"
-import Test from "../components/Test.vue";
-import HeaderProduct from "../components/bascic-product-information/header-product.vue";
+import orderRouter from "./order-router"
+import Test from "../components/Test.vue"
+import NotFound from "../components/not-found.vue"
+import HeaderProduct from "../components/header/header-product.vue"
 
 const routes = [
     { 
@@ -15,13 +16,14 @@ const routes = [
             }
         ]
     },
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
     { ...ProductRouter},
+    { ...orderRouter}
 ]
 
 const router = createRouter({
     history: createWebHistory(),
     routes: routes, 
-  })
+})
   
-
 export default router;

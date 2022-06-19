@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Branch;
 use App\Models\SalesDetail;
-use App\Models\BasicProductInformation;
+use App\Models\Product;
 use Carbon\Carbon;
 
 /**
@@ -23,7 +23,7 @@ class SalesProductFactory extends Factory
         return [
             'branch_id' => Branch::factory(),
             'sales_detail_id' => SalesDetail::factory(),
-            'basic_product_information_id' => BasicProductInformation::factory(),
+            'basic_product_information_id' => Product::factory(),
             'published_at' => Carbon::now(),
             'number_purchases' => $this->faker->numberBetween(1,5),
         ];

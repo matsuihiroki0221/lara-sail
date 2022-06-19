@@ -1,7 +1,5 @@
 <template>
-    <div>
-        hello
-    </div>
+    <img src="img/Error-cuate.png" alt="" class="img-fluid">
 </template>
 
 <script lang="ts">
