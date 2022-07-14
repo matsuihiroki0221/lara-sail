@@ -1,7 +1,7 @@
 <template>
     <teleport to="body">
-        <div class="modal" id="tag-create" v-show="isVisible" @click="close"></div>
-        <div class="modal-content" v-show="isVisible">
+        <div class="modal-back" id="tag-create" v-show="isVisible" @click="close"></div>
+        <div class="modal-contents" v-show="isVisible">
             <h3>カテゴリ―一覧・作成</h3>
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
@@ -93,7 +93,6 @@
             }
 
             return {
-                
                 categories,
                 newCategory,
                 //method
@@ -107,36 +106,5 @@
 </script>
 
 <style scoped lang='sass'>
-.modal
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  background-color: rgba(0,0,0,.5)
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  z-index: 1
-
-.modal-content
-  position: fixed
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
-  background-color: rgba(0,0,0,.5)
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  z-index: 2
-  
-  // モーダルの幅や色などはお好きにどうぞ！
-  background-color: white
-  width: 600px
-  height: auto
-  border-radius: 20px
-  padding: 20px
 
 </style>

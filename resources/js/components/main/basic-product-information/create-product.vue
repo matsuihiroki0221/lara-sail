@@ -92,7 +92,6 @@ export default defineComponent({
 
             ProductService.storeProduct(formData).
                 then(res => {
-                    console.log(res);
                     router.push({name: 'ProductList'})
                     
                 })

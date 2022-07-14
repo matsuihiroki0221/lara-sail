@@ -11,13 +11,18 @@ class SalesDetail extends Model
     use HasFactory, SoftDeletes;
 
     /**
-     * 複数代入不可能な属性
      *
      * @var array
      */
-    protected $guarded = [
+    protected $fillable = [
         "id",
         "branch_id",
+        "total_amount",
+        "total_tax_amount",
+        "total_number_purchases",
+        "deposit_amount",
+        "change",
+        "published_at"
     ];
 
     /**
@@ -25,7 +30,7 @@ class SalesDetail extends Model
      *
      * @var array
      */
-    protected $appends = ['total_non_taxed_price'];
+    // protected $appends = ['total_non_taxed_price'];
 
     /**
      * ユーザーの名前の取得
@@ -33,9 +38,9 @@ class SalesDetail extends Model
      * @param  string  $value
      * @return string
      */
-    public function getTotalNonTaxedPriceAttribute($value) {
-        return $this->total_amount - $this->total_tax_amount;
-    }
+    // public function getTotalNonTaxedPriceAttribute($value) {
+    //     return $this->total_amount - $this->total_tax_amount;
+    // }
 
     /**
      * 売上詳細を取得

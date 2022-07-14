@@ -7,9 +7,15 @@
             </span>
             <div class="d-flex">
                 <div class="mx-4">
-                    <category-create :isVisible="tagCreateModalVisible" @close="closeCreateModal"></category-create>
-                    <button class="btn btn-light" @click="showCreateModal">
+                    <category-create :isVisible="tagCreateModalVisible" @close="closeTagCreateModal"></category-create>
+                    <button class="btn btn-light" @click="showTagCreateModal">
                         categoryを新規作成
+                    </button>
+                </div>
+                <div class="mx-4">
+                    <create-url :isVisible="urlCreateModalVisible" @url-close="closeUrlCreateModal"></create-url>
+                    <button class="btn btn-light" @click="showUrlCreateModal">
+                        テーブルURLを作成
                     </button>
                 </div>
                 <div class="mx-4">
@@ -33,27 +39,40 @@
 
 <script lang ="ts">
 import { defineComponent, ref } from "vue"
-import categoryCreateVue from "../modals/category-create.vue";
+import CategoryCreate from "../modals/category-create.vue";
+import CreateUrl from "../modals/create-url.vue";
 
 export default defineComponent({
     components: {
-        'category-create': categoryCreateVue
+        'category-create': CategoryCreate,
+        'create-url':CreateUrl
     },
     setup() {
         const tagCreateModalVisible = ref<boolean>(false);
+        const urlCreateModalVisible = ref<boolean>(false);
 
-        const showCreateModal = () => {
+        const showTagCreateModal = () => {
             tagCreateModalVisible.value = true;
         }
 
-        const closeCreateModal = () => {
+        const closeTagCreateModal = () => {
             tagCreateModalVisible.value = false;
+        }
+        const showUrlCreateModal = () => {
+            urlCreateModalVisible.value = true;
+        }
+
+        const closeUrlCreateModal = () => {
+            urlCreateModalVisible.value = false;
         }
 
         return {
             tagCreateModalVisible,
-            showCreateModal,
-            closeCreateModal,
+            showTagCreateModal,
+            closeTagCreateModal,
+            urlCreateModalVisible,
+            showUrlCreateModal,
+            closeUrlCreateModal
         }
     }
 })

@@ -4,29 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\Node\Expr\FuncCall;
 
 class SalesProduct extends Model
 {
     use HasFactory, SoftDeletes;
 
     /**
-     * 複数代入不可能な属性
      *
      * @var array
      */
-    protected $guarded = [
-        "id",
+    protected $fillable = [
         "sales_detail_id",
+        "product_id",
+        "published_at",
+        "number_purchases"
     ];
 
-    protected function salesDetail() {
+    protected function salesDetail():BelongsTo {
         return $this->belongsTo(SalesDetail::class);
     }
 
-    protected function products() {
+    protected function products():HasMany {
         return $this->HasMany(Product::class);
     
     }

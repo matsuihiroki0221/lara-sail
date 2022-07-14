@@ -12,6 +12,5 @@ require("laravel-mix-vue3");
  */
 
 mix.ts('resources/js/app.ts', 'public/ts')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]).vue();
+    .sass('resources/sass/app.scss', 'public/css')
+    .vue();

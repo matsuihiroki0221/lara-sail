@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SalesProduct;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSalesProductRequest;
+use App\Interfaces\SalesProductInterface;
 
 class SalesProductController extends Controller
 {
-        /**
+    protected $salesProductRepository;
+
+    public function __construct(SalesProductInterFace $salesProductRepository)
+    {
+        $this->salesProductRepository = $salesProductRepository;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->salesProductRepository->index();
     }
 
     /**
@@ -32,9 +32,9 @@ class SalesProductController extends Controller
      * @param  TeacherAssignRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(StoreSalesProductRequest $request)
     {
-
+        $this->salesProductRepository->store($request);
     }
 
     /**
@@ -43,9 +43,9 @@ class SalesProductController extends Controller
      * @param  TeacherAssignRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request, SalesProduct $salesProduct)
     {
-
+        $this->salesProductRepository->update($request,$salesProduct);
     }
 
     /**
@@ -54,8 +54,8 @@ class SalesProductController extends Controller
      * @param  TeacherAssignRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function delete()
+    public function destroy(SalesProduct $salesProduct)
     {
-
+        $this->salesProductRepository->destroy($salesProduct);
     }
 }

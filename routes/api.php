@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SalesProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,7 @@ Route::resource('products',ProductController::class)->except([
 
 Route::get('categories/tags_index', [CategoryController::class, 'tagsIndex']);
 Route::resource('categories',CategoryController::class);
+
+Route::resource('sales_product', SalesProductController::class)->except([
+    'create,'
+]);
