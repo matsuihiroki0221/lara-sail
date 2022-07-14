@@ -5,24 +5,24 @@
             <p>
                 テーブル毎にURLを作成します。<br>
             </p>
-            <p>
-                <label class="typo__label"></label>
-                <select class="form-select" multiple aria-label="multiple select example">
+            <p class="w-100">
+                <label class="typo__label">テーブル番号</label>
                     <Multiselect
                     v-model="selectTableNumber"
                     mode="tags"
-                    placeholder=""
+                    placeholder="テーブル番号を選択してください"
+                    :close-on-select="false"
                     :options="tableNumbers"
                     :searchable="true"
-                    :createTag="true"
+                :createTag="true"
                 />
-                </select>
             </p>
-        </div>
-        <div v-if="selectTableNumber.length ==0 ">
-            <p v-for="No  in selectTableNumber" :key="No">
-                <vue-qrcode value="process.env.MIX_APP_API_BASE_URL + '//' + No"></vue-qrcode>
-            </p>
+            <div v-if="selectTableNumber.length > 0 ">
+                <p v-for="No  in selectTableNumber" :key="No">
+                    <span>{{No}}</span>
+                    <vue-qrcode value="process.env.MIX_APP_API_BASE_URL + '//' + No"></vue-qrcode>
+                </p>
+            </div>
         </div>
    </teleport>
 </template>
@@ -75,39 +75,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped src="@vueform/multiselect/themes/default.css">
-
-/* .modal{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0,0,0,.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-  
-
-.modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0,0,0,.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    
-    background-color: white;
-    width: 600px;
-    height: auto;
-    border-radius: 20px;
-    padding: 20px;
-} */
-</style>
+<style src="@vueform/multiselect/themes/default.css"></style>
