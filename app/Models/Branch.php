@@ -13,6 +13,8 @@ class Branch extends Model
     protected $guarded = [
         'id',
         'company_id',
+        'password',
+        'login_id',
     ];
 
     public function company() {

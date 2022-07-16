@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use App\Models\Company;
 
 /**
@@ -19,7 +20,9 @@ class BranchFactory extends Factory
     {
         return [
             'company_id' => Company::factory(),
+            'login_id' => Str::random(8),
             'name' => $this->faker->name(),
+            'password' =>  Str::random(8),
             'tel' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
         ];
