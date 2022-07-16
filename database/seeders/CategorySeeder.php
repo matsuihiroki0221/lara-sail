@@ -16,27 +16,35 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
+            'branch_id' => 1,
             'name' => 'ドリンク'
         ]);
         Category::create([
+            'branch_id' => 1,
             'name' => 'アルコール'
         ]);
         Category::create([
+            'branch_id' => 1,
             'name' => 'ソフトドリンク'
         ]);
         Category::create([
+            'branch_id' => 1,
             'name' => '一品物'
         ]);
         Category::create([
+            'branch_id' => 1,
             'name' => 'サラダ'
         ]);
         Category::create([
+            'branch_id' => 1,
             'name' => '肉・魚'
         ]);
         Category::create([
+            'branch_id' => 1,
             'name' => 'ごはん系'
         ]);
         Category::create([
+            'branch_id' => 1,
             'name' => 'デザート'
         ]);
     }
