@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('sales_details', function (Blueprint $table) {
-            $table->integer('table_no')->after('branch_id')->comment('席番号');
+            $table->integer('table_no')->after('store_id')->comment('席番号');
         });
     }
 

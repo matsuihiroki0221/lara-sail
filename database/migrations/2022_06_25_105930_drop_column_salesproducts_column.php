@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('sales_products', function (Blueprint $table) {
-            $table->dropForeign('sales_products_branch_id_foreign');
-            $table->dropColumn('branch_id');
+            $table->dropForeign('sales_products_store_id_foreign');
+            $table->dropColumn('store_id');
             $table->integer('status')->after('number_purchases')->default(1)->comment('注文数');
         });
     }
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('sales_products', function (Blueprint $table) {
-            $table->foreignId('branch_id')->comment('支店ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('store_id')->comment('支店ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->dropColumn('status');
         });
     }

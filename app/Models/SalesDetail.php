@@ -16,7 +16,7 @@ class SalesDetail extends Model
      */
     protected $fillable = [
         "id",
-        "branch_id",
+        "store_id",
         "total_amount",
         "total_tax_amount",
         "total_number_purchases",

@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('sales_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->comment('支店情報ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('store_id')->comment('支店情報ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('total_amount')->comment('合計金額');
             $table->integer('total_tax_amount')->comment('合計消費税額');
             $table->integer('total_number_purchases')->comment('合計点数');

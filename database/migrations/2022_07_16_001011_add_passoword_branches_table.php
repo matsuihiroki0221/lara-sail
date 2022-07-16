@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('branches', function (Blueprint $table) {
-            $table->string('login_id', 8)->unique()->comment('ログインする際のid')->after('company_id');
+        Schema::table('stores', function (Blueprint $table) {
+            $table->string('login_id', 8)->unique()->comment('ログインする際のid')->after('id');
             $table->string('password',10)->after('name');
         });
     }
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('branches', function (Blueprint $table) {
+        Schema::table('stores', function (Blueprint $table) {
             $table->dropColumn('login_id');
             $table->dropColumn('password');
         });

@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('company_id')->comment('会社情報ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name')->nullable()->comment('支店名');
             $table->string('tel');
             $table->string('address')->nullable()->comment('住所');
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branchs');
+        Schema::dropIfExists('stores');
     }
 };

@@ -26,7 +26,7 @@ class StoreSalesProductRequest extends FormRequest
         return [
             'order_content.product_id' => 'required|numeric',
             'order_content.number_purchases' => 'required|numeric',
-            'other_info.branch_id' => 'required|numeric',
+            'other_info.store_id' => 'required|numeric',
             'other_info.sales_detail_id' => 'nullable|numeric',
             'other_info.table_no' => 'required|numeric',
         ];

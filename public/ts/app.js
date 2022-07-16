@@ -23062,7 +23062,7 @@ __webpack_require__.r(__webpack_exports__);
     var detailVisible = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var detailId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
     var tableNo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1);
-    var branchId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1);
+    var storeId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1);
 
     var openDetailModal = function openDetailModal(id) {
       detailVisible.value = true;
@@ -23083,7 +23083,7 @@ __webpack_require__.r(__webpack_exports__);
       detailVisible: detailVisible,
       closeDetailModal: closeDetailModal,
       detailId: detailId,
-      branchId: branchId,
+      storeId: storeId,
       tableNo: tableNo
     };
   }
@@ -23192,7 +23192,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup(props, context) {
     var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)();
-    var branchId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(route.params.branchId);
+    var storeId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(route.params.storeId);
     var baseUrl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("http://localhost/api");
     var selectTableNumber = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var tableNumbers = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
@@ -23210,7 +23210,7 @@ __webpack_require__.r(__webpack_exports__);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(appendTableNumber);
     return {
       baseUrl: baseUrl,
-      branchId: branchId,
+      storeId: storeId,
       selectTableNumber: selectTableNumber,
       tableNumbers: tableNumbers,
       close: close
@@ -23258,7 +23258,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Number,
       defalult: 0
     },
-    branchId: {
+    storeId: {
       required: true,
       type: Number,
       defaoult: 0
@@ -23287,7 +23287,7 @@ __webpack_require__.r(__webpack_exports__);
         number_purchases: orderNumber.value
       };
       var other_info = {
-        branch_id: 1,
+        store_id: 1,
         sales_detail_id: 5,
         table_no: 1
       };
@@ -24155,11 +24155,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     isVisible: _ctx.detailVisible,
     productId: _ctx.detailId,
     tableNo: _ctx.tableNo,
-    branchId: _ctx.branchId,
+    storeId: _ctx.storeId,
     onClose: _ctx.closeDetailModal
   }, null, 8
   /* PROPS */
-  , ["isVisible", "productId", "tableNo", "branchId", "onClose"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.categories, function (category) {
+  , ["isVisible", "productId", "tableNo", "storeId", "onClose"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.categories, function (category) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: category.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name), 1
@@ -24614,7 +24614,7 @@ __webpack_require__.r(__webpack_exports__);
   path: '/order',
   component: _components_header_order_header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
   children: [{
-    path: 'list/:branchId/:tableNo',
+    path: 'list/:storeId/:tableNo',
     component: _components_main_order_screen_product_list_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     name: 'OrderProductList'
   }]

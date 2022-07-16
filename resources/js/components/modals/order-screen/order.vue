@@ -47,7 +47,7 @@ export default defineComponent({
             type: Number,
             defalult:0
         },
-        branchId : {
+        storeId : {
             required: true,
             type: Number,
             defaoult: 0,
@@ -76,7 +76,7 @@ export default defineComponent({
                 number_purchases: orderNumber.value
             }
             const other_info = {
-                branch_id:1,
+                store_id:1,
                 sales_detail_id:5,
                 table_no:1
             }

@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Branch;
+use App\Models\Store;
 use App\Models\SalesDetail;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -21,7 +21,7 @@ class SalesProductFactory extends Factory
     public function definition()
     {
         return [
-            'branch_id' => Branch::factory(),
+            'store_id' => Store::factory(),
             'sales_detail_id' => SalesDetail::factory(),
             'basic_product_information_id' => Product::factory(),
             'published_at' => Carbon::now(),

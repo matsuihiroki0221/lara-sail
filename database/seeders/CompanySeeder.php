@@ -19,7 +19,7 @@ class CompanySeeder extends Seeder
     {
         Company::factory()
             ->count(1)
-            ->hasbranches(2)
+            ->hasstores(2)
             ->create();
     }
 }

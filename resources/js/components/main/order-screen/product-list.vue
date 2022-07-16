@@ -4,7 +4,7 @@
         :isVisible="detailVisible"
         :productId="detailId"
         :tableNo="tableNo"
-        :branchId="branchId"
+        :storeId="storeId"
         @close="closeDetailModal"
     />
     <div class="p-3">
@@ -44,7 +44,7 @@ export default defineComponent({
         const detailVisible = ref<boolean>(false)
         const detailId = ref<number>(0)
         const tableNo = ref<number>(1)
-        const branchId = ref<number>(1)
+        const storeId = ref<number>(1)
 
         const openDetailModal = (id:number) => {
             detailVisible.value= true
@@ -67,7 +67,7 @@ export default defineComponent({
             detailVisible,
             closeDetailModal,
             detailId,
-            branchId,
+            storeId,
             tableNo
         }
     },

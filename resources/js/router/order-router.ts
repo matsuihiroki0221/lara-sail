@@ -6,7 +6,7 @@ export default {
     component: OrderHeader,
     children: [
         {
-            path: 'list/:branchId/:tableNo',
+            path: 'list/:storeId/:tableNo',
             component: OrderProductList,
             name: 'OrderProductList'
         }

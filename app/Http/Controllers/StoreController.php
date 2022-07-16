@@ -5,7 +5,7 @@ use App\Models\ProductInformation;
 
 use Illuminate\Http\Request;
 
-class BranchController extends Controller
+class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.

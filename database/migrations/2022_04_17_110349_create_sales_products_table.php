@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('sales_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->comment('支店ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('store_id')->comment('支店ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('sales_detail_id')->comment('売上明細ID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('product_id')->comment('商品マスタID')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->dateTime('published_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('売上日時');

@@ -45,7 +45,7 @@ export default defineComponent({
     },
     setup(props,context) {
         const route = useRoute()
-        const branchId = ref(route.params.branchId);
+        const storeId = ref(route.params.storeId);
         const baseUrl = ref(process.env.MIX_APP_API_BASE_URL);
         const selectTableNumber = ref<number[]>([]);
         const tableNumbers = ref<number[]>([]);
@@ -66,7 +66,7 @@ export default defineComponent({
 
         return {
             baseUrl,
-            branchId,
+            storeId,
             selectTableNumber,
             tableNumbers,
             close

@@ -7,9 +7,9 @@ use Illuminate\Support\Str;
 use App\Models\Company;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Branch>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Store>
  */
-class BranchFactory extends Factory
+class StoreFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,6 @@ class BranchFactory extends Factory
     public function definition()
     {
         return [
-            'company_id' => Company::factory(),
             'login_id' => Str::random(8),
             'name' => $this->faker->name(),
             'password' =>  Str::random(8),

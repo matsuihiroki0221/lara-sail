@@ -21,8 +21,8 @@ class SalesProductRepository implements SalesProductInterface {
             $params = $request->all();
             Log::info($params);
             $salesDetail = SalesDetail::firstOrNew(['id' => $params['other_info']['sales_detail_id']]);
-            if(empty($salesDetail->branch_id)) {
-                $salesDetail->branch_id = $params['other_info']['branch_id'];
+            if(empty($salesDetail->store_id)) {
+                $salesDetail->store_id = $params['other_info']['store_id'];
             }
             $salesDetail->table_no = $params['other_info']['table_no'];
             $salesDetail->save();
