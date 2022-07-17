@@ -16,19 +16,30 @@ use App\Http\Controllers\SalesProductController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('categories/tags_index', [CategoryController::class, 'tagsIndex']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::resource('products',ProductController::class)->only([
+        'store', 'update', 'destroy'
+    ]);
+    Route::resource('sales_product', SalesProductController::class)->except([
+        'create,'
+    ]);
+    Route::resource('categories', CategoryController::class)->only([
+        'store', 'update', 'destroy'
+    ]);
 });
 
 Route::post('products/{product}',[ProductController::class, 'update']);
-Route::resource('products',ProductController::class)->except([
-    'create', 'update',
-]);;
-
-Route::get('categories/tags_index', [CategoryController::class, 'tagsIndex']);
-Route::resource('categories',CategoryController::class);
-
-Route::resource('sales_product', SalesProductController::class)->except([
-    'create,'
+Route::resource('products',ProductController::class)->only([
+    'index', 'show',
 ]);
+Route::resource('categories', CategoryController::class)->only([
+    'index', 'show',
+]);
+
+
+Route::post('/login',[App\Http\Controllers\LoginController::class, 'login']);
+Route::post('/logout',[App\Http\Controllers\LoginController::class, 'logout']);
