@@ -33,6 +33,7 @@ export default defineComponent({
                     })
                     .then((res) => {
                         if( res.data.status_code == 200) {
+                            localStorage.setItem("auth", "true");
                             router.push({
                                 name:"ProductList"
                             });

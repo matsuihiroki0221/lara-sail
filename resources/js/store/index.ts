@@ -1,11 +1,21 @@
-import { createStore} from 'vuex'
-import categories from './modules/categories';
+import { createStore } from 'vuex'
+import categories from './modules/categories'
+import storeInfos from './modules/store-infos'
+import createPersistedState from "vuex-persistedstate";
 
 
 export default createStore({
     modules: {
         categories,
+        storeInfos
       },
-    //   strict: debug,
-    //   plugins: debug ? [createLogger()] : []
+      plugins: [createPersistedState(
+        {
+          key: 'id',
+          paths:[
+            'storeInfos.id'
+          ],
+        storage: window.sessionStorage,
+      }
+      )],
 })

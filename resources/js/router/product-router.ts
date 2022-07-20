@@ -12,17 +12,20 @@ export default
             {
                 path: 'productList',
                 component: ShowProductList,
-                name: 'ProductList'
+                name: 'ProductList',
+                meta: {authOnly: true}
             },
             {
                 path: 'productDetail/:productId',
                 component: ShowProductDetail,
-                name: 'ProductDetail'
+                name: 'ProductDetail',
+                meta: {authOnly: true}
             },
             {
                 path: 'createProduct',
                 component: CreateProduct,
-                name: 'CreateProduct'
+                name: 'CreateProduct',
+                meta: {authOnly: true}
             },
         ]
 }

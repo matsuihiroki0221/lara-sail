@@ -6,6 +6,7 @@ import NotFound from "../components/not-found.vue"
 import HeaderProduct from "../components/header/header-product.vue"
 import Login from "../components/Login.vue"
 import Logout from "../components/Logout.vue"
+
 const routes = [
     { 
         path: '/',
@@ -24,17 +25,44 @@ const routes = [
         path: "/login",
         name: "Login",
         component: Login,
+        // meta: {guestOnly: true}
     },
     {
-        path: "/about",
-        name: "About",
+        path: "/logout",
+        name: "Logout",
         component: Logout,
+        // meta: {guestOnly: true}
     }
 ]
+
+const isLogin = () => {
+    return localStorage.getItem("auth");
+}
+
+
 
 const router = createRouter({
     history: createWebHistory(),
     routes: routes, 
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.authOnly) {
+        if (!isLogin()) {
+            next("/login");
+        } else {
+            next();
+        }
+    } else if (to.meta.guestOnly) {
+        if (isLogin()) {
+            next("/logout");
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
+});
+
   
 export default router;

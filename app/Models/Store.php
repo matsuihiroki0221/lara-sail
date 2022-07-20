@@ -11,10 +11,12 @@ class Store extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [
-        'id',
-        'company_id',
-        
+    protected $fillable = [
+        'login_id',
+        'name',
+        'password',
+        'tel',
+        'address',
     ];
 
     public function company() {

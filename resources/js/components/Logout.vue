@@ -15,6 +15,7 @@ export default defineComponent({
         const logout = () => {
             axios.post("api/logout")
                 .then(res => {
+                    localStorage.removeItem("auth")
                     router.push({
                         name:"Login"
                     })

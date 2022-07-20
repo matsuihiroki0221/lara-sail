@@ -18,7 +18,7 @@ class LoginController extends Controller
         Log::info($credentials);
 
         if(Auth::attempt($credentials)){
-            return response()->json(['status_code' => 200,'message' => 'success'],200);
+            return response()->json(['status_code' => 200,'message' => 'success', 'store_id' => Auth::id()],200);
         } else {
             return response()->json(['status_code' => 500,'message' => 'Unauthorized'],200);
         }
