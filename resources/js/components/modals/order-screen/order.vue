@@ -29,6 +29,7 @@ import { Product, DefaultProduct } from '../../../types/product'
 import { useToast } from 'vue-toastification'
 import ProductService from '../../../services/apis/product-service'
 import SalesProductService from '../../../services/apis/sales-product-service'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
     props: {
@@ -44,12 +45,10 @@ export default defineComponent({
         },
         tableNo: {
             required:true,
-            type: Number,
             defalult:0
         },
         storeId : {
             required: true,
-            type: Number,
             defaoult: 0,
         }
     },
@@ -76,9 +75,8 @@ export default defineComponent({
                 number_purchases: orderNumber.value
             }
             const other_info = {
-                store_id:1,
-                sales_detail_id:5,
-                table_no:1
+                store_id: props.storeId,
+                table_no: props.tableNo
             }
             const saveData= {
                 order_content,
@@ -97,9 +95,6 @@ export default defineComponent({
                     })
                 }
             )
-
-
-
         }
         const close = ():void => {
             context.emit('close')

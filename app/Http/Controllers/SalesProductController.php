@@ -21,7 +21,7 @@ class SalesProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id = null)
     {
         return $this->salesProductRepository->index();
     }
@@ -57,5 +57,9 @@ class SalesProductController extends Controller
     public function destroy(SalesProduct $salesProduct)
     {
         $this->salesProductRepository->destroy($salesProduct);
+    }
+
+    public function changeStatus(Request $request) {
+        return $this->salesProductRepository->changeStatus($request);
     }
 }

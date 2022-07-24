@@ -39,12 +39,13 @@ export default defineComponent({
     setup() {
         const isLoading = ref(false);
         const router = useRouter();
+        const route = useRoute();
         const store = useStore();
         const categories = computed(()=> store.state.categories.all)
         const detailVisible = ref<boolean>(false)
         const detailId = ref<number>(0)
-        const tableNo = ref<number>(1)
-        const storeId = ref<number>(1)
+        const tableNo = ref(route.params.tableNo)
+        const storeId = ref(route.params.storeId);
 
         const openDetailModal = (id:number) => {
             detailVisible.value= true

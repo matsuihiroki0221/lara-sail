@@ -13,7 +13,7 @@ export default createStore({
         {
           key: 'id',
           paths:[
-            'storeInfos.id'
+            'storeInfos.storeId'
           ],
         storage: window.sessionStorage,
       }

@@ -6,6 +6,7 @@ import NotFound from "../components/not-found.vue"
 import HeaderProduct from "../components/header/header-product.vue"
 import Login from "../components/Login.vue"
 import Logout from "../components/Logout.vue"
+import OrderStatus from "./order-status"
 
 const routes = [
     { 
@@ -19,20 +20,21 @@ const routes = [
         ]
     },
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
-    { ...ProductRouter},
-    { ...orderRouter},
+    { ...ProductRouter },
+    { ...orderRouter },
+    {...OrderStatus },
     {
         path: "/login",
         name: "Login",
         component: Login,
-        // meta: {guestOnly: true}
+        meta: {guestOnly: true}
     },
     {
         path: "/logout",
         name: "Logout",
         component: Logout,
-        // meta: {guestOnly: true}
-    }
+        meta: {authOnly: true}
+    },
 ]
 
 const isLogin = () => {

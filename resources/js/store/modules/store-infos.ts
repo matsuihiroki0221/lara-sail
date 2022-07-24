@@ -4,16 +4,21 @@ const state = () => ({
 
 const getters = {}
 
-const mutaions = {
+const mutations = {
     getStoreId (state:any, getId:number) {
         state.storeId = getId;
     }
 }
 
 const actions = {
-    getStoreIdAction({commit}: {commit:any}, getId : number) {
+    getStoreId({commit}: {commit:any}, getId : number) {
         commit('getStoreId', getId)
     }
 }
 
-export default{}
+export default{
+    namespaced:true,
+    state,
+    actions,
+    mutations
+}

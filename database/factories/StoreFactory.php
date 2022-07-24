@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Company;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Store>
@@ -21,7 +21,7 @@ class StoreFactory extends Factory
         return [
             'login_id' => Str::random(8),
             'name' => $this->faker->name(),
-            'password' =>  Str::random(8),
+            'password' =>  Hash::make('password'),
             'tel' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
         ];

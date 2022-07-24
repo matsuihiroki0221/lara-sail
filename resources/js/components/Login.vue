@@ -15,6 +15,7 @@
 import axios from 'axios';
 import { defineComponent, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
 export default defineComponent({
     setup() {
@@ -23,6 +24,7 @@ export default defineComponent({
         const pass = ref('')
         const error = ref(false)
         const getMessage = ref('')
+        const store = useStore();
         
         const login = () => {
             axios.get('/sanctum/csfr-cookie')
@@ -34,6 +36,9 @@ export default defineComponent({
                     .then((res) => {
                         if( res.data.status_code == 200) {
                             localStorage.setItem("auth", "true");
+                            console.log(res.data)
+                            const storeId = res.data.store_id;
+                            store.dispatch('storeInfos/getStoreId', storeId);
                             router.push({
                                 name:"ProductList"
                             });

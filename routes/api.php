@@ -17,7 +17,9 @@ use App\Http\Controllers\SalesProductController;
 |
 */
 Route::get('categories/tags_index', [CategoryController::class, 'tagsIndex']);
+Route::get('sales_product/index_for_customer/{id}',[SalesProductController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('sales_product/change_status', [SalesProductController::class, 'changeStatus']);
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
@@ -39,6 +41,7 @@ Route::resource('products',ProductController::class)->only([
 Route::resource('categories', CategoryController::class)->only([
     'index', 'show',
 ]);
+
 
 
 Route::post('/login',[App\Http\Controllers\LoginController::class, 'login']);

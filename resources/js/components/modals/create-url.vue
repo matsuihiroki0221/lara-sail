@@ -20,7 +20,7 @@
             <div v-if="selectTableNumber.length > 0 ">
                 <p v-for="No  in selectTableNumber" :key="No">
                     <span>{{No}}</span>
-                    <vue-qrcode value="process.env.MIX_APP_API_BASE_URL + '//' + No"></vue-qrcode>
+                    <vue-qrcode value="process.env.MIX_APP_API_BASE_URL + '/' + storeId + '/' + No"></vue-qrcode>
                 </p>
             </div>
         </div>
@@ -30,7 +30,7 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import Multiselect from '@vueform/multiselect'
 import { useRoute } from 'vue-router'
-
+import { useStore } from 'vuex'
 
 export default defineComponent({
     props: {
@@ -45,6 +45,7 @@ export default defineComponent({
     },
     setup(props,context) {
         const route = useRoute()
+        const store = useStore();
         const storeId = ref(route.params.storeId);
         const baseUrl = ref(process.env.MIX_APP_API_BASE_URL);
         const selectTableNumber = ref<number[]>([]);
