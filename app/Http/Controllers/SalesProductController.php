@@ -6,6 +6,7 @@ use App\Models\SalesProduct;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSalesProductRequest;
 use App\Interfaces\SalesProductInterface;
+use App\Http\Resources\SalesDetailResource;
 
 class SalesProductController extends Controller
 {
@@ -21,9 +22,10 @@ class SalesProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = null)
+    public function index()
     {
-        return $this->salesProductRepository->index();
+        $result = $this->salesProductRepository->index();
+        return SalesDetailResource::collection($result);
     }
 
     /**

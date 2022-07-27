@@ -23211,9 +23211,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _services_apis_sales_product_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/apis/sales-product-service */ "./resources/js/services/apis/sales-product-service.ts");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  setup: function setup() {}
+  setup: function setup() {
+    var orderList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+
+    var getOrderList = function getOrderList() {
+      _services_apis_sales_product_service__WEBPACK_IMPORTED_MODULE_1__["default"].getIndex().then(function (res) {
+        var data = res.data;
+        orderList.value = data;
+      });
+    };
+
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      getOrderList();
+    });
+    return {
+      orderList: orderList
+    };
+  }
 }));
 
 /***/ }),
@@ -24423,10 +24441,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<nav class=\"navbar navbar-light bg-light\"><div class=\"container-fluid\"><a class=\"navbar-brand\" href=\"#\">Navbar</a></div></nav><div><ol class=\"list-group list-group-numbered\"><li class=\"list-group-item\">Cras justo odio</li><li class=\"list-group-item\">Cras justo odio</li><li class=\"list-group-item\">Cras justo odio</li></ol></div>", 2);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", {
+  "class": "navbar navbar-light bg-light"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "container-fluid"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "navbar-brand",
+  href: "#"
+}, "Navbar")])], -1
+/* HOISTED */
+);
 
+var _hoisted_2 = {
+  "class": "list-group list-group-numbered"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _hoisted_1;
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ol", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.orderList, function (_ref) {
+    var order = _ref.order,
+        no = _ref.no;
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
+      "class": "list-group-item",
+      key: no
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(order), 1
+    /* TEXT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])])], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),
@@ -24914,7 +24957,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   path: '/order-status',
-  component: _components_main_order_status_order_status_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  component: _components_main_order_status_order_status_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+  name: 'OrderStatus',
+  meta: {
+    authOnly: true
+  }
 });
 
 /***/ }),
@@ -25140,7 +25187,8 @@ var SalesProductService = /*#__PURE__*/function () {
     key: "getIndex",
     value: function getIndex() {
       return _http_common__WEBPACK_IMPORTED_MODULE_0__["default"].get(this.commonUrl);
-    } // 詳細取得
+    } // 注文一覧確認
+    // 詳細取得
 
   }, {
     key: "getDetail",

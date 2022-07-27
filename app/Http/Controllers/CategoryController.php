@@ -26,6 +26,7 @@ class CategoryController extends Controller
     {
         $result = $this->categoryRepository->index();
         return CategoryResource::collection($result);
+        // return $result;
     }
 
     /**

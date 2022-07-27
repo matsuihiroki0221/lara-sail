@@ -27,8 +27,8 @@ class SalesProduct extends Model
         return $this->belongsTo(SalesDetail::class);
     }
 
-    protected function products():HasMany {
-        return $this->HasMany(Product::class);
+    protected function products() {
+        return $this->belongsTo(Product::class);
     
     }
     

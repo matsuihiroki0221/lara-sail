@@ -9,6 +9,7 @@ class SalesProductService {
         return http.get<any>(this.commonUrl);
     
     }
+    // 注文一覧確認
     // 詳細取得
     getDetail(id:any): AxiosPromise<any> {
         return http.get<any>(this.commonUrl + '/' + id );

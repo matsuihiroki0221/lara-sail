@@ -8,7 +8,7 @@ export default {
         {
             path: 'list/:storeId/:tableNo',
             component: OrderProductList,
-            name: 'OrderProductList'
+            name: 'OrderProductList',
         }
     ]
 }

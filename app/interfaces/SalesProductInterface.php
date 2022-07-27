@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 
 interface SalesProductInterface {
-    public function index($storeId = null);
+    public function index();
 
     public function store($request);
 

@@ -11,18 +11,13 @@ use Illuminate\Support\Facades\Log;
 
 class SalesProductRepository implements SalesProductInterface {
     // 一覧取得
-    public function index($storeId = null) {
-        $salesDetail =  SalesDetail::when(
-                $storeId,
-                function ($query,$storeId) {
-                    $query->where('id', $storeId)->firstOrFail();
-            })
-            ->unless(
-                $storeId,
-                function ($query) {
-                    $query->where('id', Auth::id())->firstOrFail();
-            });
-        return $salesDetail->salesProducts();
+    public function index() {
+        Log::info(Auth::id());
+        $salesDetail =  SalesDetail::where('store_id', Auth::id())
+                            ->where('status', config('status.order_detail')[1])
+                            ->with('salesProducts')
+                            ->get();
+        return $salesDetail;
     }
 
     // 新規登録
@@ -70,8 +65,9 @@ class SalesProductRepository implements SalesProductInterface {
     public function changeStatus($request) {
         $salesProduct = SalesProduct::where('id',$request->id)->firstOrFail();
         return DB::transaction(function () use ($request, $salesProduct) {
-            $salesProduct->status = $request->status;
-            $salesProduct->save();
+        
+        $salesProduct->status = $request->status;
+        $salesProduct->save();
         });
     }
 }
