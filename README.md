@@ -29,7 +29,7 @@ Laravelを深く知ることが、webアプリを深く知るにつながると�
         所感：難しくはなかったが、WebPackの設定などを知ることができた
     Vue.jsはTypeScriptとcomposition Apiを使用して記載する
         所感
-            java scriptと違い、型を意識する必要があり、java scriptだけの感覚でいたら正直面倒くさい。。。
+            java scriptと違い、型を意識する必要があり、java scriptだけの感覚でいたら正直大変だ。。。
             だが、返値などやり取りする値など意識するため、勉強になった。phpstanを使用した事があるが、
             それも型を意識しないといけなかったし、それも良い経験になった。
     vue-router・vuex・axiosなどは機能毎にモジュール化する
