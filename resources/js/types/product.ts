@@ -21,4 +21,4 @@ const DefaultProduct:Product = {
     categories:[],
 }
 
-export { Product, DefaultProduct}
+export { Product, DefaultProduct }

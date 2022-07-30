@@ -15,7 +15,6 @@ class LoginController extends Controller
             'login_id' => 'required',
             'password' => 'required'
         ]);
-        Log::info($credentials);
 
         if(Auth::attempt($credentials)){
             return response()->json(['status_code' => 200,'message' => 'success', 'store_id' => Auth::id()],200);

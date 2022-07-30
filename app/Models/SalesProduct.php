@@ -23,13 +23,16 @@ class SalesProduct extends Model
         "number_purchases"
     ];
 
-    protected function salesDetail():BelongsTo {
+    public function salesDetail():BelongsTo {
         return $this->belongsTo(SalesDetail::class);
     }
 
-    protected function products() {
+    public function products() {
         return $this->belongsTo(Product::class);
     
     }
-    
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 }

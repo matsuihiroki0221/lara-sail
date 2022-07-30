@@ -20,7 +20,6 @@ class ProductUpdateRequest extends FormRequest
     // public function validationData()
     // {
     //     $product = json_decode($this->input('product'), true);
-    //     Log::info($product);
     //     return $this->all() + ['product' => $product];
     // }
 

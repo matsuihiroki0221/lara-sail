@@ -67,7 +67,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        Log::info($request->input('product'));
         $this->productRepository->update($request, $product);
     }
 
@@ -79,7 +78,6 @@ class ProductController extends Controller
      */
     public function delete(Request $request)
     {
-        Log::info($request);
         $deleteProductId = $request->input('id');
         $this->productRepository->delete($deleteProductId);
     }

@@ -17,6 +17,8 @@ use App\Http\Controllers\SalesProductController;
 |
 */
 Route::get('categories/tags_index', [CategoryController::class, 'tagsIndex']);
+Route::post('sales_product',[SalesProductController::class, 'store']);
+
 Route::get('sales_product/index_for_customer/{id}',[SalesProductController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('sales_product/change_status', [SalesProductController::class, 'changeStatus']);
@@ -27,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
         'store', 'update', 'destroy'
     ]);
     Route::resource('sales_product', SalesProductController::class)->except([
-        'create,'
+        'create','store'
     ]);
     Route::resource('categories', CategoryController::class)->only([
         'store', 'update', 'destroy'

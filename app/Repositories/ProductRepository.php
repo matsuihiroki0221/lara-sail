@@ -51,7 +51,6 @@ class ProductRepository implements ProductInterface {
         DB::beginTransaction();
         try {
             $data = $request->all();
-            Log::alert($data);
             // 商品情報を更新
             $updateProduct = (array) json_decode($data['product']);
             $product->fill($updateProduct)->save();

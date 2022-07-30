@@ -2,22 +2,28 @@
 
 namespace App\Repositories;
 
+use App\Events\newOrdered;
 use App\Interfaces\SalesProductInterface;
 use App\Models\SalesProduct;
 use App\Models\SalesDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Resources\SalesProductResource;
+use Illuminate\Database\Eloquent\Builder;
 
 class SalesProductRepository implements SalesProductInterface {
     // 一覧取得
     public function index() {
-        Log::info(Auth::id());
-        $salesDetail =  SalesDetail::where('store_id', Auth::id())
-                            ->where('status', config('status.order_detail')[1])
-                            ->with('salesProducts')
-                            ->get();
-        return $salesDetail;
+        // $salesDetail =  SalesDetail::where('store_id', Auth::id())
+        //                     ->where('status', config('status.order_detail')[1])
+        //                     ->salesProducts();
+        $SalesProducts = SalesProduct::wherehas('salesDetail',
+                fn(Builder $query) => $query->where('store_id', Auth::id())
+             )
+             ->orderBy('created_at')
+             ->get();
+        return $SalesProducts;
     }
 
     // 新規登録
@@ -25,7 +31,6 @@ class SalesProductRepository implements SalesProductInterface {
         DB::beginTransaction();
         try {
             $params = $request->all();
-            Log::info($params);
             $salesDetail = SalesDetail::where('status',config('status.order_detail')[1])
                 ->firstOrNew([
                     'store_id' => $params['other_info']['store_id'],
@@ -38,12 +43,17 @@ class SalesProductRepository implements SalesProductInterface {
             $salesDetail->save();
             
             $salesDetail->salesProducts()->create($params["order_content"]);
-
+            $SalesProducts = SalesProduct::wherehas('salesDetail',
+                fn(Builder $query) => $query->where('store_id', $salesDetail->store_id)
+             )
+             ->orderBy('created_at')
+             ->get();
             DB::commit();
         }  catch(\Exception $e) {
             DB::rollBack();
             throw new \Exception($e->getMessage());
         }
+        event(new newOrdered(SalesProductResource::collection($SalesProducts)));
     }
 
     // 詳細を取得

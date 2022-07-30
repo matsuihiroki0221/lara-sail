@@ -19,6 +19,11 @@
                     </button>
                 </div>
                 <div class="mx-4">
+                    <router-link :to="{name:'OrderStatus'}" class="btn btn-outline-secondary">
+                        注文状況へ
+                    </router-link>
+                </div>
+                <div class="mx-4">
                     <router-link :to="{name:'ProductList'}" class="btn btn-outline-secondary">
                         商品一覧へ
                     </router-link>

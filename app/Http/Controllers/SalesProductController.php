@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreSalesProductRequest;
 use App\Interfaces\SalesProductInterface;
 use App\Http\Resources\SalesDetailResource;
+use App\Http\Resources\SalesProductResource;
 
 class SalesProductController extends Controller
 {
@@ -25,7 +26,7 @@ class SalesProductController extends Controller
     public function index()
     {
         $result = $this->salesProductRepository->index();
-        return SalesDetailResource::collection($result);
+        return SalesProductResource::collection($result);
     }
 
     /**

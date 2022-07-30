@@ -24,6 +24,7 @@ class SalesDetailResource extends JsonResource
             'store_id'=> $this->store_id,
             'table_no'=> $this->table_no,
             'paid_at'=> $this->paid_at,
+            'created_at' => $this->created_at,
         ];
     }
 }
