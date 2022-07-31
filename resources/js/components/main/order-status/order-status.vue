@@ -46,6 +46,11 @@
             onMounted(
                 () => {
                     getOrderList();
+                    (window as any).Echo.channel('new-ordered-channel')
+                        .listen('newOrdered', (res:any) => {
+                            console.log(res);
+                            orderList.value.push = res;
+                        })
                 }
             )
             return {

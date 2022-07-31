@@ -42,18 +42,14 @@ class SalesProductRepository implements SalesProductInterface {
             $salesDetail->table_no = $params['other_info']['table_no'];
             $salesDetail->save();
             
-            $salesDetail->salesProducts()->create($params["order_content"]);
-            $SalesProducts = SalesProduct::wherehas('salesDetail',
-                fn(Builder $query) => $query->where('store_id', $salesDetail->store_id)
-             )
-             ->orderBy('created_at')
-             ->get();
+            $newOrder = $salesDetail->salesProducts()->create($params["order_content"]);
+            
             DB::commit();
         }  catch(\Exception $e) {
             DB::rollBack();
             throw new \Exception($e->getMessage());
         }
-        event(new newOrdered(SalesProductResource::collection($SalesProducts)));
+        event(new newOrdered(new SalesProductResource($newOrder)));
     }
 
     // 詳細を取得

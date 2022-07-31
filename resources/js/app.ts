@@ -6,6 +6,7 @@ import "vue-toastification/dist/index.css";
 import Loading from './Loading.vue';
 import store from './store';
 import VueQrcode from '@chenfengyuan/vue-qrcode';
+import './bootstrap'
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
